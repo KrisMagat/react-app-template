@@ -1,1 +1,1 @@
-# react-app-template
+# solo-project
