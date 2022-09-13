@@ -31,16 +31,64 @@ userController.verifyUser = (req, res, next) => {
   //check if a user exists and password is correct
   User.find({ username: username })
     .then((data) => {
-      console.log('password type is:', typeof data[0].password);
       if (password !== data[0].password)
-        res.locals.verified = 'Username or password does not match';
-      else res.locals.verified = 'User verified';
+        res.locals.verified = 'User or password does not match';
+      else {
+        res.locals.verified = 'User verified';
+        res.locals.favorites = data[0].favorites;
+      }
       return next();
     })
     .catch((err) => {
       return next({
         log: 'userController.verifyUser middleware error',
         message: { err: 'An error has occured in userController.verifyUser' },
+      });
+    });
+};
+
+// add user favorite // this works!!
+userController.addUserFavorite = (req, res, next) => {
+  const { username, shopId } = req.body;
+  User.findOneAndUpdate(
+    { username: username },
+    { $addToSet: { favorites: [shopId] } },
+    { new: true }
+  )
+    .then((data) => {
+      console.log(data);
+      res.locals.favorites = data.favorites;
+      return next();
+    })
+    .catch((err) => {
+      return next({
+        log: 'userController.verifyUser middleware error',
+        message: {
+          err: 'An error has occured in UserfindOneAndUpdate userController.verifyUser',
+        },
+      });
+    });
+};
+
+// remove user favorite
+userController.deleteUserFavorite = (req, res, next) => {
+  const { username, shopId } = req.body;
+  User.findOneAndUpdate(
+    { username: username },
+    { $addToSet: { favorites: [shopId] } },
+    { new: true }
+  )
+    .then((data) => {
+      console.log(data);
+      res.locals.favorites = data.favorites;
+      return next();
+    })
+    .catch((err) => {
+      return next({
+        log: 'userController.verifyUser middleware error',
+        message: {
+          err: 'An error has occured in UserfindOneAndUpdate userController.verifyUser',
+        },
       });
     });
 };

@@ -15,8 +15,22 @@ router.post('/signup', userController.createUser, (req, res) => {
   res.sendStatus(200);
 });
 
-// login
+// login //this works
 router.get('/login', userController.verifyUser, (req, res) => {
+  // what should happen here on successful log in?
+  //insert userID in auth URL req.body
+  res.status(200).json(res.locals.favorites);
+});
+
+// addFavorite
+router.put('/login', userController.addUserFavorite, (req, res) => {
+  // what should happen here on successful log in?
+  //insert username in auth URL req.param
+  res.status(200).json(res.locals.favorites);
+});
+
+// removeFavorite
+router.delete('/login', userController.deleteUserFavorite, (req, res) => {
   // what should happen here on successful log in?
   //insert userID in auth URL req.param
   res.status(200).send(res.locals.verified);
