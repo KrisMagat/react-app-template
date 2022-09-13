@@ -9,7 +9,8 @@ const apiKey =
 apiController.getShops = (req, res, next) => {
   const { location, radius } = req.query;
   console.log(req.query);
-  const url = `https://api.yelp.com/v3/businesses/search?categories='bubbletea'&location=${location}&radius=${radius}`;
+  const url = `https://api.yelp.com/v3/businesses/search?categories=bubbletea&location=${location}&radius=${radius}`;
+
   console.log(url);
   fetch(url, {
     headers: { Authorization: `${apiKey}` },

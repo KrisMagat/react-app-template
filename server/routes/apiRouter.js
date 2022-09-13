@@ -2,14 +2,14 @@ const express = require('express');
 const router = express.Router();
 const apiController = require('../controllers/apiController');
 
-//Yelp api get request  (req.body object includes the request details)
-router.get('/', apiController.getShops, (req, res) => {
-  res.status(200).json(res.locals.yelpShops);
-});
-
-//Yelp api get request  (req.body object includes the request details)
+//Yelp api get request for specific shop (req.params.id)
 router.get('/:id', apiController.getFavorite, (req, res) => {
   res.status(200).json(res.locals.shopInfo);
+});
+
+//Yelp api get request for search results
+router.get('/', apiController.getShops, (req, res) => {
+  res.status(200).json(res.locals.yelpShops);
 });
 
 module.exports = router;
