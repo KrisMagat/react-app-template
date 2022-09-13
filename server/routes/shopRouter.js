@@ -2,16 +2,17 @@ const express = require('express');
 const router = express.Router();
 const shopController = require('../controllers/shopController');
 
-//db get favorites
-router.get('/', dbController.getFavorites, (req, res) => {
+// get favorites
+router.get('/:username', shopController.getFavorites, (req, res) => {
   res.status(200).json(res.locals.faveShops);
 });
 
-//db add to favorites
-router.get('/', apiController.getShops, (req, res) => {});
+// add to favorites
+router.post('/', shopController.addShop, (req, res) => {});
+//req.body to include shopID
 
-//db update favorite
-
-//db delete favorite
+// delete favorite
+router.delete('/', shopController.deleteShop, (req, res) => {});
+//req.body to include shopID
 
 module.exports = router;

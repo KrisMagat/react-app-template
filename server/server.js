@@ -6,7 +6,8 @@ const PORT = process.env.EXPRESS_PORT || 3000;
 
 //routers
 const api = require('./routes/apiRouter');
-const db = require('./routes/shopRouter');
+const shop = require('./routes/shopRouter');
+const user = require('./routes/userRouter');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -14,18 +15,18 @@ app.use(express.urlencoded({ extended: true }));
 //serve static files
 app.use('/dist', express.static(path.resolve(__dirname, '../dist')));
 
-//handle api calls
-app.use('/api', apiRouter);
-
-//handle user db calls
+// handle user db calls
 app.use('/user', shopRouter);
 
-//handle shop db calls
+// handle shop db calls
 app.use('/shop', shopRouter);
+
+// handle api calls
+app.use('/api', apiRouter);
 
 //serve index.html
 app.get('/', (req, res) =>
-  res.sendFile(path.resolve(__dirname, '../dist/index.html'))
+  res.status(200).sendFile(path.resolve(__dirname, '../dist/index.html'))
 );
 
 //default 404 handler

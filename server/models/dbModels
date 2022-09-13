@@ -36,13 +36,5 @@ const userSchema = new Schema({
 
 const User = mongoose.model('user', userSchema);
 
-//cookie schema
-const cookieSchema = new Schema({
-  cookieId: { type: String, required: true, unique: true },
-  createdAt: { type: Date, expires: 30, default: Date.now },
-});
-
-const Cookie = mongoose.model('cookie', cookieSchema);
-
 //export all models
-module.exports = { Shop, User, Cookie };
+module.exports = { Shop, User };
