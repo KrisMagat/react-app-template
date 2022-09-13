@@ -5,7 +5,8 @@ const app = express();
 const PORT = process.env.EXPRESS_PORT || 3000;
 
 //routers
-const api = require('./routes/api');
+const api = require('./routes/apiRouter');
+const db = require('./routes/shopRouter');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -14,7 +15,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/dist', express.static(path.resolve(__dirname, '../dist')));
 
 //handle api calls
-app.use('/api', api);
+app.use('/api', apiRouter);
+
+//handle user db calls
+app.use('/user', shopRouter);
+
+//handle shop db calls
+app.use('/shop', shopRouter);
 
 //serve index.html
 app.get('/', (req, res) =>

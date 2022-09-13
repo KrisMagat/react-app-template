@@ -15,7 +15,7 @@ apiController.getShops = (req, res, next) => {
   })
     .then((res) => res.json())
     .then((data) => {
-      res.locals.shops = data;
+      res.locals.yelpShops = data;
       return next();
     })
     .catch((err, req, res, next) => {
