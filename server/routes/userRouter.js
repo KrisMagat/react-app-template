@@ -33,7 +33,7 @@ router.put('/login', userController.addUserFavorite, (req, res) => {
 router.delete('/login', userController.deleteUserFavorite, (req, res) => {
   // what should happen here on successful log in?
   //insert userID in auth URL req.param
-  res.status(200).send(res.locals.verified);
+  res.status(200).json(res.locals.favorites);
 });
 
 module.exports = router;

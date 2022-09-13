@@ -62,32 +62,32 @@ userController.addUserFavorite = (req, res, next) => {
     })
     .catch((err) => {
       return next({
-        log: 'userController.verifyUser middleware error',
+        log: 'userController.addUserFavorite middleware error',
         message: {
-          err: 'An error has occured in UserfindOneAndUpdate userController.verifyUser',
+          err: 'An error has occured in userController.addUserFavorite',
         },
       });
     });
 };
 
-// remove user favorite
+// remove user favorite // this works!!
 userController.deleteUserFavorite = (req, res, next) => {
   const { username, shopId } = req.body;
   User.findOneAndUpdate(
     { username: username },
-    { $addToSet: { favorites: [shopId] } },
+    { $pull: { favorites: shopId } },
     { new: true }
   )
     .then((data) => {
-      console.log(data);
+      console.log('record deleted');
       res.locals.favorites = data.favorites;
       return next();
     })
     .catch((err) => {
       return next({
-        log: 'userController.verifyUser middleware error',
+        log: 'userController.deleteUserFavorite middleware error',
         message: {
-          err: 'An error has occured in UserfindOneAndUpdate userController.verifyUser',
+          err: 'An error has occured in userController.deleteUserFavorite',
         },
       });
     });
