@@ -4,15 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "webpack serve --mode development",
-    "build": "webpack --mode production",
-    "start": "node server/server.js",
-    "dev": "nodemon server/server.js"
+    "build": "NODE_ENV=production webpack",
+    "start": "NODE_ENV=production node server/server.js",
+    "dev": "concurrently \"NODE_ENV=production node server/server.js\" \"NODE_ENV=production webpack serve --hot --open\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^7.4.0",
     "cross-env": "^7.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

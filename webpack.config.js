@@ -3,20 +3,28 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
+  mode: process.env.NODE_ENV,
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'index.bundle.js',
   },
   devServer: {
-    port: 3000,
+    static: {
+      publicPath: '/dist',
+      directory: path.resolve(__dirname, 'dist'),
+    },
+    // proxy: {
+    //   '/api': 'http://localhost:3000',
+    // },
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env', '@babel/preset-react'],
         },
       },
       {
