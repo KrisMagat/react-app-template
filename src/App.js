@@ -1,9 +1,10 @@
 import React from 'react';
+import components from './components/MainContainer';
 
 export function App() {
   return (
     <div>
-      <h1>Welcome {new Date().toDateString()}</h1>
+      <h1>BobaFinder</h1>
     </div>
   );
 }
