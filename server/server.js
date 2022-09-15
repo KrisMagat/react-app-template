@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //serve static files
-app.use('/dist', express.static(path.resolve(__dirname, '../dist')));
+app.use('/client', express.static(path.resolve(__dirname, '../client')));
 
 // handle user db calls
 app.use('/user', userRouter);
@@ -22,7 +22,7 @@ app.use('/api', apiRouter);
 
 //serve index.html
 app.get('/', (req, res) =>
-  res.status(200).sendFile(path.resolve(__dirname, '../dist/index.html'))
+  res.status(200).sendFile(path.resolve(__dirname, '../client/index.html'))
 );
 
 //default 404 handler

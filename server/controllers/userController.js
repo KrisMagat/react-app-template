@@ -47,6 +47,26 @@ userController.verifyUser = (req, res, next) => {
     });
 };
 
+// get user favorite // this works!!
+userController.getUserFavorite = (req, res, next) => {
+  //user name is in req.params
+  console.log(req.params);
+  User.findOne({ username: req.params.username })
+    .then((data) => {
+      console.log(data);
+      res.locals.favorites = data.favorites;
+      return next();
+    })
+    .catch((err) => {
+      return next({
+        log: 'userController.getUserFavorite middleware error',
+        message: {
+          err: 'An error has occured in userController.getUserFavorite',
+        },
+      });
+    });
+};
+
 // add user favorite // this works!!
 userController.addUserFavorite = (req, res, next) => {
   const { username, shopId } = req.body;

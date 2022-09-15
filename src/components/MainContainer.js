@@ -1,18 +1,21 @@
 //dependencies
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
 
 //child components
-//TDB
+import Favorites from './Favorites';
 
 //parent component
 const MainContainer = () => {
   //render
+  console.log('Main Container loaded');
+
   return (
-    <div className='container'>
-      <Overlay className='overlay' />
-      <Favorites />
-      <YelpContainer />
+    <div id='mainDiv'>
+      <h1>BobaFinder</h1>
+      <div id='favDiv'>
+        <Favorites />
+      </div>
+      <div id='yelpDiv'>{/* <YelpContainer className='yelp' /> */}</div>
     </div>
   );
 };

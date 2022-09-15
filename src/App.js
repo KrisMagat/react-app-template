@@ -1,10 +1,27 @@
 import React from 'react';
-import components from './components/MainContainer';
+import { useState, useEffect } from 'react';
+import LoginPage from './components/LoginPage';
+import MainContainer from './components/MainContainer';
 
-export function App() {
+const App = () => {
+  //monitor session cookie
+  const checkCookie = () => {
+    console.log(document.getElementById('login'));
+    if (sessionStorage.username) document.getElementById('login').zIndex = '0';
+  };
+  window.setInterval(checkCookie, 100);
+
+  //render page
   return (
     <div>
-      <h1>BobaFinder</h1>
+      <div id='login'>
+        <LoginPage />
+      </div>
+      <div>
+        <MainContainer />
+      </div>
     </div>
   );
-}
+};
+
+export default App;
