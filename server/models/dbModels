@@ -10,19 +10,17 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
     // sets the name of the DB that our collections are part of
-    dbName: 'bobaFinder',
+    dbName: 'iLoveBoba',
   })
   .then(() => console.log('Connected to Mongo DB.'))
   .catch((err) => console.log(err));
 
-//user schema
-const userSchema = new Schema({
-  username: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  favorites: [String],
+//favorite
+const favoriteSchema = new Schema({
+  name: { type: String, required: true },
 });
 
-const User = mongoose.model('users', userSchema);
+const Favorite = mongoose.model('favorite', favoriteSchema);
 
 //export all models
-module.exports = User;
+module.exports = Favorite;

@@ -1,4 +1,4 @@
-const User = require('../models/dbModels');
+const User = require('./dbModels');
 
 const userController = {};
 

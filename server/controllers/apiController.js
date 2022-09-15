@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+const Favorite = require('../models/dbModels');
 
 const apiController = {};
 
@@ -30,7 +31,7 @@ apiController.getShops = (req, res, next) => {
           url: url,
         };
       });
-      // console.log('RES.LOCALS', res.locals.shops);
+
       return next();
     })
     .catch((err, req, res, next) => {
@@ -43,36 +44,40 @@ apiController.getShops = (req, res, next) => {
     });
 };
 
-//getFavorite
-// apiController.getFavorite = (req, res, next) => {
-//   // business ID in req.params
+// check if favorite
+apiController.checkFavorite = (req, res, next) => {
+  // shop name in req.params
+  console.log(req.params);
+  Favorite.find({ name: req.params.name })
+    .then((data) => {
+      res.locals.favorite = data[0].name;
+      return next();
+    })
+    .catch((err, req, res, next) => {
+      return next({
+        log: 'apiController.checkFavorite middleware error',
+        message: {
+          err: 'An error has occured in apiController.checkFavorite middleware',
+        },
+      });
+    });
+};
 
-//   const url = `https://api.yelp.com/v3/businesses/${req.params.id}`;
-//   console.log(url);
-//   fetch(url, {
-//     headers: { Authorization: `${apiKey}` },
-//   })
-//     .then((res) => res.json())
-//     .then((data) => {
-//       res.locals.shopInfo = {
-//         shopId: data.id,
-//         name: data.name,
-//         rating: data.rating,
-//         is_closed: data.is_closed ? 'Closed' : 'Open',
-//         location: data.location.display_address,
-//         phone: data.display_phone,
-//         url: data.url,
-//       };
-//       return next();
-//     })
-//     .catch((err, req, res, next) => {
-//       return next({
-//         log: 'apiController.getFavorite middleware error',
-//         message: {
-//           err: 'An error has occured in apiController.getFavorite middleware',
-//         },
-//       });
-//     });
-// };
+//add to favorite
+apiController.addFavorite = (req, res, next) => {
+  console.log(req.body);
+  Favorite.create(req.body)
+    .then((data) => {
+      console.log('Favorite added', data);
+      res.locals.favorite = data.name;
+      return next();
+    })
+    .catch((err) => {
+      return next({
+        log: 'userController.createUser middleware error',
+        message: { err: 'An error has occured in userController.createUser' },
+      });
+    });
+};
 
 module.exports = apiController;

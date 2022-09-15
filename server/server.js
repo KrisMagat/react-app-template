@@ -16,7 +16,17 @@ app.get('/', (req, res) =>
   res.status(200).sendFile(path.resolve(__dirname, '../src/index.html'))
 );
 
-// handle api calls
+// api call to check favorite
+app.get('/api/:name', apiController.checkFavorite, (req, res) => {
+  res.status(200).json(res.locals.favorite);
+});
+
+// api call to add favorite
+app.post('/api', apiController.addFavorite, (req, res) => {
+  res.sendStatus(200);
+});
+
+//api call to get all shops
 app.get('/api', apiController.getShops, (req, res) => {
   res.status(200).json(res.locals.shops);
 });
