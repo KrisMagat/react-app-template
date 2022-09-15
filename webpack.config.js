@@ -3,19 +3,26 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
+  entry: './src/index.js',
   mode: process.env.NODE_ENV,
   output: {
     path: path.resolve(__dirname, 'client'),
-    filename: 'index.bundle.js',
+    filename: 'bundle.js',
   },
   devServer: {
     static: {
       publicPath: '/client',
       directory: path.resolve(__dirname, 'client'),
     },
-    // proxy: {
-    //   '/api': 'http://localhost:3000',
-    // },
+    proxy: {
+      '/api/**': { target: 'http://localhost:3000/' },
+      compress: true,
+      open: true,
+      hot: true,
+      liveReload: true,
+      historyApiFallback: true,
+      // port: 8080,
+    },
   },
   module: {
     rules: [

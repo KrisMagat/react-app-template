@@ -1,23 +1,17 @@
 //dependencies
 import React, { Component } from 'react';
-
-//child components
-import Favorites from './Favorites';
+import Search from './Search';
 
 //parent component
-const MainContainer = () => {
-  //render
-  console.log('Main Container loaded');
-
+const Main = () => {
   return (
-    <div id='mainDiv'>
-      <h1>BobaFinder</h1>
-      <div id='favDiv'>
-        <Favorites />
+    <div id='main'>
+      <div className='titleSearch'>
+        <div id='title'>iWantBoba</div>
+        <Search />
       </div>
-      <div id='yelpDiv'>{/* <YelpContainer className='yelp' /> */}</div>
     </div>
   );
 };
 
-export default MainContainer;
+export default Main;

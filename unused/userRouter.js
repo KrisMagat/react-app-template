@@ -1,20 +1,20 @@
 const isWindows = require('cross-env/src/is-windows');
 const express = require('express');
 const router = express.Router();
-const userController = require('../controllers/userController');
+const userController = require('./models/userController');
 
 // create user //this works!!!
-router.post('/login', userController.createUser, (req, res) => {
-  // what should happen here on successful sign up?
-  //insert userID in auth URL req.param
-  res.sendStatus(200);
-});
+// router.post('/login', userController.createUser, (req, res) => {
+//   // what should happen here on successful sign up?
+//   //insert userID in auth URL req.param
+//   res.sendStatus(200);
+// });
 
-// login //this works
-router.get('/login', userController.verifyUser, (req, res) => {
+// login //signup //this works
+router.post('/login', userController.verifyUser, (req, res) => {
   // what should happen here on successful log in?
-  //insert userID in auth URL req.body
-  res.status(200).json(res.locals.favorites);
+  if (sessionStorage.username) res.redirect('/client/index.html');
+  else res.redirect('/client/login.html');
 });
 
 // getFavorite

@@ -1,62 +1,147 @@
 body {
-  background-color: rgb(24, 24, 24);
- 
+  background-color: #35261d;
 }
 
-h1 {
-  color: blue;
-}
-
-
-#login {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  padding-top: 200px;
-  margin: auto;
-  z-index: 2;
-  background-color: rgb(24, 24, 24);
-}
-
-.loginForm {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  width: 500px;
-  height: 300px;
-  color: rgb(70, 70, 70);
-  background-color: rgb(192, 192, 192);
-  margin-left: auto;
-  margin-right: auto;
-}
-
-
-#mainDiv {
-  width: 1080px;
-  height: 1080px;
-  position: absolute;
-  z-index: 1;
-  background-color: rgb(24, 24, 24);
-    left: 0;
-    right: 0;
-    top: 100px;
-    bottom: 0;
-    margin: auto;
+a {
+  cursor: pointer;
+  color:rgb(242, 242, 242);
+  text-decoration: none;
   
 }
 
-
-
-.form-entry {
-  display: flex;
-  flex-direction: column;
+a.link {
+  color:rgb(242, 242, 242)
+} 
+a.visited {
+  color: rgb(242, 242, 242)
+}
+a.hover {
+  color: rgb(242, 242, 242)
 }
 
-.login-buttons {
+a.active {
+  color: rgb(242, 242, 242)
+}
+
+
+
+
+#main {
+  display: flex;
+  flex-direction: column;
+  margin-top: 200px;
+  margin-right: auto;
+  margin-left: auto;
+  justify-content: center;
+  align-items: center;
+  width: 1280px;
+  color: rgb(242, 242, 242);
+}
+
+#title {
+  font-size: 100px;
+  color: #f4ac45;
+}
+
+#search {
   display: flex;
   justify-content: space-between;
-  width: 150px;
+  align-items: center;
+  width: 900px;
+  height: 80px;
+  margin-right: auto;
+  margin-left: auto;
+  color: #7a152c;
+  
+}
+
+#searchInput {
+  height: 40px;
+  width: 500px;
+  font-size: 20px;
+  border-radius: 10px;
+  padding-left: 10px;
+  background-color: #dad6d6;
+}
+
+.titleSearch{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px;
+  background-color: #1a130e;
+  border-radius: 30px;
+}
+
+.dropdn {
+  height: 40px;
+  font-size: 20px;
+  border-radius: 10px;
+  background-color: #dad6d6;
+  cursor: pointer;
+}
+
+.searchbtn {
+  height: 40px;
+  width: 120px;
+  font-size: 20px;
+  border-radius: 10px;
+  background-color: #4b8170;
+  color: #dad6d6;
+  cursor: pointer;
+}
+
+#shopContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 1280px;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#shopCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color:rgb(40, 80, 16);
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 350px;
+  width: 280px;
+  margin: 20px;
+  margin-top: 0px;
+  border-radius: 20px;
+}
+
+#shopName {
+  color: rgb(155,182,215);
+  font-size: 35px;
+}
+
+#yelplogo {
+  height: 30px;
+}
+#shopRating {
+  vertical-align: center;
+  font-size: 30px;
+}
+
+#status {
+  font-size: 25px;
+}
+
+
+
+#addressDiv {
+  display: flex;
+  flex-direction: row;
+}
+
+#location {
+  width: 240px;
+}
+
+#google {
+  height: 30px;
 }

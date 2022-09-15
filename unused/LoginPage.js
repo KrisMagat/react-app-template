@@ -1,5 +1,3 @@
-//dependencies
-import React, { Component, useState } from 'react';
 
 //login/signup box
 const LoginPage = () => {
