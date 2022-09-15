@@ -9,6 +9,12 @@ module.exports = {
     path: path.resolve(__dirname, 'client'),
     filename: 'bundle.js',
   },
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000,
+  },
+
   devServer: {
     static: {
       publicPath: '/client',
